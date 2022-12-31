@@ -1,4 +1,5 @@
 # json-rpc-docs
+
 JSON-RPC 2.0 Spec translated in Korean
 
 # JSON-RPC 2.0 Specification
@@ -11,23 +12,47 @@ Author: [JSON-RPC Working Group](https://groups.google.com/g/json-rpc) <json-rpc
 
 번역: dohp.kim@gmail.com
 
+```text
+목차
+  1. 개요
+  2. 문서 범례
+  3. 호환성
+  4. 요청 객체
+    4.1 통보기능
+    4.2 params 의 구조
+  5. 응답 객체
+    5.1 에러 객체
+  6. 일괄처리
+  7. 예제s
+  8. 확장
+```
+
 ## 1 개요
 
-JSON-RPC 는 상태를 관리하지 않는(stateless) 가볍게 사용 할 수 있는 원격 프로시저 호출 프로토콜 입니다(RPC, Remote Procedure Call). 이 문서는 JSON-RPC 의 구조와 사용
-규칙에 대해서 정의합니다. JSON-RPC 는 구체적인 기술에 의존하지 않는 개념으로써 소켓(TCP), HTTP 그리고 다양한 통신 환경에 적용될 수 있는 통신 방법론입니다. 단지 자료를 표현하는 수단으로 JSON
+JSON-RPC 는 상태를 관리하지 않는(stateless) 가볍게 사용 할 수 있는 원격 프로시저 호출 프로토콜 입니다(RPC; Remote Procedure Call). 이 문서는 JSON-RPC 의 구조와 작동
+규칙에 대해서 정의합니다. JSON-RPC 는 구체적인 기술에 의존하지 않고 소켓(socket), HTTP 그리고 다양한 네트워크 기술에 적용될 수 있는 통신 규약입니다. 
+단지 자료를 표현하는 수단으로 [JSON](https://www.json.org/)([RFC4627](https://www.ietf.org/rfc/rfc4627.txt))
 을 사용합니다.
 
+>심플하게 사용하세요!
+>
 >It is designed to be simple!
 
 ## 2 문서 범례
 
-강조된 키워드 “반드시(MUST, REQUIRED, SHALL)”, “권장(SHOULD, RECOMMENDED)”, “선택(MAY, OPTIONAL)” 는 RFC 2119 에 정의된 용례로 사용되었습니다.
+강조된 키워드 “반드시(MUST, REQUIRED, SHALL)”, “권장(SHOULD, RECOMMENDED)”, “선택(MAY, OPTIONAL)” 는 [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) 에 정의된 용례로 사용되었습니다.
 
-JSON-RPC 는 JSON 을 사용하므로, 데이터의 타입(자료형) 역시 JSON 타입 시스템을 그대로 사용합니다. JSON 은 4 가지 원시타입(Strings, Numbers, Booleans, Null)을 표현
+JSON-RPC 는 JSON 을 사용하므로, 데이터의 타입(자료형) 역시 JSON 타입 시스템을 그대로 사용합니다([https://www.json.org](https://www.json.org/) 혹은 [RFC4627](https://www.ietf.org/rfc/rfc4627.txt) 참조).
+JSON 은 4 가지 원시타입(Strings, Numbers, Booleans, Null)을 표현
 할 수 있으며 두 가지의 객체 타입(Object, Array)을 지원합니다. 이 문서에서의 “원시타입” 이란 용어는 항상 JSON 원시타입을 의미하며, 이 문서에서의 “객체타입” 용어는 항상 JSON 의 객체 타입을
 의미합니다.
 
 이 문서의 예제에서 나오는 모든 식별자 이름들은 대소문자를 구분하여 작동되는것으로 가정했습니다. 함수, 메소드, 프로시저 용어들은 혼용하여 사용했습니다.
+
+이 문서에서 언급된 클라이언트는, 요청객체의 출처(origin)이고 응답객체를 처리하는 주체입니다.
+이 문서에서 언급된 서버는, 응답객체의 출처(origin)이고 요청객체를 처리하는 주체입니다.
+
+
 
 ## 3 호환성
 
@@ -90,7 +115,7 @@ Null 을 사용하지 않는게 권장됩니다. 버전 2.0 에서는 통보기�
 
 키는 반드시 대소문자를 구분하여 식별되어야 합니다.
 
-## 5 응답 형식
+## 5 응답 객체
 
 요청 객체를 수신한 서버는 통보기능을 제외한 모든 요청에 반드시 응답해야만 합니다. 응답 객체는 아래의 필드를 가지고 있습니다.
 
@@ -538,7 +563,7 @@ JSON 포맷 자체가 틀린 요청인 경우:
 <-- // 일괄처리 요청의 모든 요청이 통보기능이므로 응답 자체를 해서는 안됨
 ```
 
-8 확장기능
+8 확장
 
 “rpc.” 으로 시작되는 메소드 이름은 시스템을 위한 예약어 이므로 반드시 다른 용도로 사용되어서는 안됩니다.
 
