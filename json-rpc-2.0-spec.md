@@ -1,7 +1,5 @@
 # JSON-RPC 2.0 Specification
 
----
-
 Origin Date: 2010-03-26 (based on the 2009-05-24 version)
 
 Updated: 2013-01-04
